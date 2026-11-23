@@ -1,1 +1,77 @@
 /* personagens.css — aparência dos personagens */
+
+#lista-personagens,
+#lista-selecao {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cartao {
+  padding: 1rem;
+  border: 1px solid #51416c;
+  border-radius: 0.75rem;
+  background: var(--cor-fundo);
+}
+
+.cartao .figura {
+  display: grid;
+  place-items: center;
+  min-height: 7rem;
+  border: 2px solid;
+  border-radius: 0.5rem;
+  font-size: 5rem;
+}
+
+.cartao h3 {
+  margin-bottom: 0.25rem;
+}
+
+.cartao-titulo {
+  margin-top: 0;
+}
+
+.cartao-atributos {
+  padding-left: 1.25rem;
+}
+
+.personagem-faisca {
+  background: radial-gradient(circle, #ffb347, #ff5e3a);
+  color: #ff5e3a;
+  box-shadow: 0 0 0.75rem #ff5e3a88;
+}
+
+.personagem-casco {
+  background: radial-gradient(circle, #a2b87a, #515b4c);
+  color: #a2b87a;
+  box-shadow: 0 0 0.75rem #a2b87a88;
+}
+
+.personagem-zunido {
+  background: radial-gradient(circle, #ffe258, #263766);
+  color: #ffe258;
+  box-shadow: 0 0 0.75rem #ffe25888;
+}
+
+.personagem-bruma {
+  background: radial-gradient(circle, #a1b4cf, #694480);
+  color: #a1b4cf;
+  box-shadow: 0 0 0.75rem #a1b4cf88;
+}
+
+.personagem-ignis {
+  background: radial-gradient(circle, #ffd267, #a22537);
+  color: #ffd267;
+  box-shadow: 0 0 0.75rem #ffd26788;
+}
+
+.personagem-cristalina {
+  background: radial-gradient(circle, #f4fbff, #a18ee2);
+  color: #b9ddff;
+  box-shadow: 0 0 0.75rem #b9ddff88;
+}
+
+#lista-selecao .bloqueado {
+  filter: grayscale(1);
+}

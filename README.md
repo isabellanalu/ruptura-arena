@@ -79,6 +79,8 @@ A ideia inicial do projeto está em `DESENVOLVIMENTO DO JOGO RUPTURA ARENA.pdf`.
 
 ## Equipe
 
-| Nome | Função |
-|------|--------|
-| (preencher) | (preencher) |
+- Isabella Nalu
+- Sophia Couto
+- Beatriz Guadanhin
+- Eduardo Carvalho
+- Arthur Gonçalves

@@ -9,14 +9,93 @@
   <link rel="stylesheet" href="css/personagens.css">
 </head>
 <body>
-  <section id="tela-menu" class="tela">
-    <h1>Ruptura Arena</h1>
-  </section>
-  <section id="tela-personagens" class="tela escondida"></section>
-  <section id="tela-como-jogar" class="tela escondida"></section>
-  <section id="tela-selecao" class="tela escondida"></section>
-  <section id="tela-batalha" class="tela escondida"></section>
-  <section id="tela-resultado" class="tela escondida"></section>
+  <main>
+    <section id="tela-menu" class="tela">
+      <h1>Ruptura Arena</h1>
+      <p id="menu-historia">Quando a lua se partiu em dois, uma fenda de energia abriu caminho para uma arena de pedra flutuante. Criaturas lendárias lutam ali pelo título de Campeão da Ruptura.</p>
+      <p><span id="menu-nivel">Nível 1 — Iniciante</span> · <span id="menu-vitorias">0 vitórias</span></p>
+      <div class="acoes">
+        <button type="button" id="btn-jogar">Jogar</button>
+        <button type="button" id="btn-personagens">Personagens</button>
+        <button type="button" id="btn-como-jogar">Como jogar</button>
+      </div>
+      <button type="button" id="btn-zerar-progresso">Zerar progresso</button>
+    </section>
+
+    <section id="tela-personagens" class="tela escondida">
+      <h2>Personagens</h2>
+      <div id="lista-personagens"></div>
+      <button type="button" id="btn-voltar-personagens">Voltar</button>
+    </section>
+
+    <section id="tela-como-jogar" class="tela escondida">
+      <h2>Como jogar</h2>
+      <p>Escolha um personagem liberado e enfrente o computador. Use o teclado ou os botões da arena.</p>
+      <ul>
+        <li><strong>F</strong> — Ataque normal.</li>
+        <li><strong>G</strong> — Segure para defender e reduzir o dano recebido.</li>
+        <li><strong>H</strong> — Cure parte da vida. A cura recarrega em 10 segundos.</li>
+        <li><strong>R</strong> — Use o ataque máximo uma vez por partida.</li>
+      </ul>
+      <p>A partida dura 2min30s. Reduza a vida do adversário a zero para vencer. Se o tempo acabar, vence quem tiver mais vida. Vidas iguais dão empate.</p>
+      <p>Você começa no nível 1. Com 2 vitórias chega ao nível 2, e com 4 chega ao nível 3. Cada nível libera novos personagens.</p>
+      <button type="button" id="btn-voltar-como-jogar">Voltar</button>
+    </section>
+
+    <section id="tela-selecao" class="tela escondida">
+      <h2>Escolha seu personagem</h2>
+      <p><span id="selecao-nivel">Seu nível: 1 — Iniciante</span></p>
+      <div id="lista-selecao"></div>
+      <button type="button" id="btn-voltar-selecao">Voltar</button>
+    </section>
+
+    <section id="tela-batalha" class="tela escondida">
+      <h2>Batalha</h2>
+      <p><span id="batalha-nivel"></span> <span id="cronometro">2:30</span></p>
+      <div>
+        <h3>VOCÊ</h3>
+        <p id="jogador-nome"></p>
+        <div class="barra-vida">
+          <div id="jogador-vida-barra" class="barra-vida-preenchimento"></div>
+        </div>
+        <p id="jogador-vida-texto"></p>
+        <p id="jogador-cura"></p>
+        <p id="jogador-especial"></p>
+        <div id="jogador-figura" class="figura"></div>
+      </div>
+      <div>
+        <h3>IA (COMPUTADOR)</h3>
+        <p id="ia-nome"></p>
+        <div class="barra-vida">
+          <div id="ia-vida-barra" class="barra-vida-preenchimento"></div>
+        </div>
+        <p id="ia-vida-texto"></p>
+        <p id="ia-cura"></p>
+        <p id="ia-especial"></p>
+        <div id="ia-figura" class="figura"></div>
+      </div>
+      <div class="acoes">
+        <button type="button" id="btn-atacar">Atacar (F)</button>
+        <button type="button" id="btn-defender">Defender (G)</button>
+        <button type="button" id="btn-curar">Curar (H)</button>
+        <button type="button" id="btn-especial">Ataque máximo (R)</button>
+      </div>
+      <div id="mensagens"></div>
+    </section>
+
+    <section id="tela-resultado" class="tela escondida">
+      <h2 id="resultado-titulo">Resultado</h2>
+      <p id="resultado-mensagem"></p>
+      <p id="resultado-jogador"></p>
+      <p id="resultado-ia"></p>
+      <p id="resultado-vitorias"></p>
+      <p id="resultado-nivel"></p>
+      <div class="acoes">
+        <button type="button" id="btn-jogar-novamente">Jogar novamente</button>
+        <button type="button" id="btn-menu">Menu</button>
+      </div>
+    </section>
+  </main>
 
   <!-- A ordem dos scripts segue as dependências entre os arquivos. -->
   <script src="js/dados.js"></script>
