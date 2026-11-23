@@ -1,1 +1,86 @@
 /* estilo.css — estilos gerais, telas e botões */
+
+:root {
+  --cor-fundo: #14101f;
+  --cor-painel: #221a36;
+  --cor-texto: #f2ecff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+main {
+  width: 100%;
+  max-width: 44rem;
+}
+
+.tela {
+  padding: clamp(1rem, 5vw, 2rem);
+  background: var(--cor-painel);
+  border: 1px solid #51416c;
+  border-radius: 1rem;
+}
+
+.escondida {
+  display: none !important;
+}
+
+#tela-menu {
+  text-align: center;
+}
+
+h1, h2 {
+  margin-top: 0;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+#tela-menu .acoes {
+  justify-content: center;
+  margin: 1.5rem 0 1rem;
+}
+
+button {
+  padding: 0.65rem 1rem;
+  border: 1px solid #8871b4;
+  border-radius: 0.5rem;
+  background: #4a3470;
+  color: var(--cor-texto);
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover:enabled {
+  background: #5d438a;
+}
+
+button:focus-visible {
+  outline: 2px solid #e0c6ff;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+#btn-zerar-progresso {
+  font-size: 0.875rem;
+}
