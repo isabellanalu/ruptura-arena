@@ -81,4 +81,8 @@ A ideia inicial do projeto está em `DESENVOLVIMENTO DO JOGO RUPTURA ARENA.pdf`.
 
 | Nome | Função |
 |------|--------|
-| (preencher) | (preencher) |
+| Isabella Nalu | A definir |
+| Sophia Couto | A definir |
+| Beatriz Guadanhin | A definir |
+| Eduardo Carvalho | A definir |
+| Arthur Gonçalves | A definir |
