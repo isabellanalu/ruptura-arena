@@ -4,6 +4,10 @@
 // =============================================
 
 const CONFIG = {
+  TEMPO_ACABANDO_S: 30,
+  VIDA_MEDIA_PERCENTUAL: 50,
+  VIDA_BAIXA_PERCENTUAL: 25,
+  LIMITE_MENSAGENS: 5,
   DURACAO_PARTIDA_S: 150,          // 2 minutos e 30 segundos
 
   RECARGA_ATAQUE_MS: 1000,         // tempo entre um ataque e a próxima ação

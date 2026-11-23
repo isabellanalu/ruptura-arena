@@ -1,1 +1,138 @@
 /* arena.css — arena, barras de vida e animações */
+
+#tela-batalha .figura {
+  display: grid;
+  place-items: center;
+  min-height: 5rem;
+  border: 2px solid;
+  border-radius: 0.5rem;
+  font-size: 3rem;
+}
+
+#ia-figura {
+  transform: scaleX(-1);
+}
+
+#tela-batalha .acoes {
+  margin-top: 1rem;
+}
+
+#btn-defender {
+  touch-action: none;
+  user-select: none;
+}
+
+.barra-vida {
+  height: 1rem;
+  background: #14101f;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.barra-vida-preenchimento {
+  height: 100%;
+  width: 100%;
+  background: #3ecf5a;
+  transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+.barra-vida-preenchimento.media {
+  background: #f0c330;
+}
+
+.barra-vida-preenchimento.baixa {
+  background: #e53935;
+}
+
+#cronometro {
+  font-variant-numeric: tabular-nums;
+  font-weight: bold;
+}
+
+.tempo-acabando,
+.msg-ia,
+.derrota {
+  color: #ff929e;
+}
+
+.msg-jogador {
+  color: #9fc9ff;
+}
+
+.msg-sistema,
+.empate {
+  color: #ffe08a;
+}
+
+.vitoria {
+  color: #8aeba5;
+}
+
+#tela-batalha .defendendo {
+  border-color: #9fc9ff;
+  outline: 2px solid #9fc9ff;
+}
+
+.atordoado {
+  filter: grayscale(1);
+}
+
+.animar-ataque {
+  animation: ataque 0.3s ease;
+}
+
+#ia-figura.animar-ataque {
+  animation-name: ataque-ia;
+}
+
+.animar-dano {
+  animation: dano 0.35s ease;
+}
+
+.animar-bloqueio {
+  animation: bloqueio 0.35s ease;
+}
+
+.animar-cura {
+  animation: cura 0.45s ease;
+}
+
+.animar-especial {
+  animation: especial 0.55s ease;
+}
+
+@keyframes ataque {
+  50% { translate: 0.75rem; }
+}
+
+@keyframes ataque-ia {
+  50% { translate: -0.75rem; }
+}
+
+@keyframes dano {
+  25% { translate: -0.35rem; }
+  50% { filter: brightness(1.7) saturate(1.6); }
+  75% { translate: 0.35rem; }
+}
+
+@keyframes bloqueio {
+  50% { filter: drop-shadow(0 0 0.8rem #79b7ff); }
+}
+
+@keyframes cura {
+  50% { filter: drop-shadow(0 0 0.8rem #3ecf5a); }
+}
+
+@keyframes especial {
+  50% { scale: 1.07; filter: drop-shadow(0 0 1rem #ffca52); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #tela-batalha .figura {
+    animation: none;
+  }
+
+  .barra-vida-preenchimento {
+    transition: none;
+  }
+}
