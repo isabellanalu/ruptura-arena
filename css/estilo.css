@@ -4,6 +4,10 @@
   --cor-fundo: #14101f;
   --cor-painel: #221a36;
   --cor-texto: #f2ecff;
+  --cor-jogador: #9fc9ff;
+  --cor-ia: #ff929e;
+  --cor-cura: #8aeba5;
+  --cor-especial: #ffe08a;
 }
 
 * {
@@ -16,7 +20,7 @@ body {
   display: grid;
   place-items: center;
   padding: 1rem;
-  background: var(--cor-fundo);
+  background: radial-gradient(ellipse at top, #322157, var(--cor-fundo) 68%);
   color: var(--cor-texto);
   font-family: "Segoe UI", Arial, sans-serif;
   line-height: 1.5;
@@ -24,7 +28,7 @@ body {
 
 main {
   width: 100%;
-  max-width: 44rem;
+  max-width: 56rem;
 }
 
 .tela {
@@ -32,6 +36,7 @@ main {
   background: var(--cor-painel);
   border: 1px solid #51416c;
   border-radius: 1rem;
+  box-shadow: 0 1rem 3rem #09061188;
 }
 
 .escondida {
@@ -39,7 +44,33 @@ main {
 }
 
 #tela-menu {
+  padding-block: clamp(2.5rem, 8vw, 5rem);
   text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 0%, #7956aa60, transparent 62%),
+    linear-gradient(150deg, #291e41, #171124 75%);
+}
+
+#tela-menu h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(2.25rem, 9vw, 4.75rem);
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 0 2rem #ac80ff75;
+}
+
+#menu-historia {
+  max-width: 48ch;
+  margin: 0 auto 1.5rem;
+  color: #d6cbe9;
+}
+
+#menu-nivel {
+  color: var(--cor-especial);
+}
+
+#menu-vitorias {
+  color: var(--cor-cura);
 }
 
 h1, h2 {
@@ -71,6 +102,10 @@ button:hover:enabled {
   background: #5d438a;
 }
 
+button:active:enabled {
+  transform: translateY(1px);
+}
+
 button:focus-visible {
   outline: 2px solid #e0c6ff;
   outline-offset: 3px;
@@ -82,5 +117,22 @@ button:disabled {
 }
 
 #btn-zerar-progresso {
+  padding-inline: 0.5rem;
+  border-color: transparent;
+  background: transparent;
+  color: #d6cbe9;
   font-size: 0.875rem;
+}
+
+#btn-jogar,
+#btn-jogar-novamente {
+  border-color: #cbb0ff;
+  background: #b997f6;
+  color: #211335;
+  font-weight: bold;
+}
+
+#btn-jogar:hover:enabled,
+#btn-jogar-novamente:hover:enabled {
+  background: #d4bcff;
 }

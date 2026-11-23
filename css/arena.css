@@ -1,12 +1,108 @@
 /* arena.css — arena, barras de vida e animações */
 
+#tela-batalha {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  background:
+    radial-gradient(ellipse at 50% 40%, #ad7ef338, transparent 48%),
+    linear-gradient(155deg, #241a3a, #14101f 80%);
+}
+
+#tela-batalha > h2 {
+  margin: 0;
+  align-self: center;
+}
+
+#tela-batalha > p {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem 0.85rem;
+  margin: 0;
+  text-align: right;
+}
+
+/* Cada lado da arena tem a sua cor, além do rótulo de identificação. */
+#tela-batalha > div:has(> #jogador-figura) {
+  --cor-lado: var(--cor-jogador);
+}
+
+#tela-batalha > div:has(> #ia-figura) {
+  --cor-lado: var(--cor-ia);
+}
+
+#tela-batalha > div:has(> .figura) {
+  min-width: 0;
+  padding: clamp(0.5rem, 2vw, 1rem);
+  border: 1px solid var(--cor-lado);
+  border-radius: 0.75rem;
+  background: #161123e8;
+  text-align: center;
+}
+
+#tela-batalha h3 {
+  margin: 0;
+  color: var(--cor-lado);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+#jogador-nome,
+#ia-nome {
+  margin: 0.25rem 0 0.75rem;
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  font-weight: bold;
+}
+
+#jogador-vida-texto,
+#ia-vida-texto {
+  margin: 0.25rem 0;
+  font-variant-numeric: tabular-nums;
+}
+
+#jogador-cura,
+#ia-cura,
+#jogador-especial,
+#ia-especial {
+  margin: 0.25rem 0;
+  font-size: 0.875rem;
+}
+
+#jogador-cura,
+#ia-cura {
+  color: var(--cor-cura);
+}
+
+#jogador-especial,
+#ia-especial {
+  color: var(--cor-especial);
+}
+
+/* A luz da fenda e o chão são desenhados com gradientes. */
 #tela-batalha .figura {
+  position: relative;
+  isolation: isolate;
   display: grid;
   place-items: center;
-  min-height: 5rem;
-  border: 2px solid;
+  min-height: clamp(6rem, 22vw, 12rem);
+  margin-top: 0.75rem;
+  border: 2px solid var(--cor-lado);
   border-radius: 0.5rem;
-  font-size: 3rem;
+  font-size: clamp(2.75rem, 9vw, 6rem);
+}
+
+#tela-batalha .figura::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(165deg, transparent 39%, #eee2ffbd 50%, transparent 62%) 50% 0 / 0.35rem 78% no-repeat,
+    radial-gradient(ellipse at 50% 45%, #b491ff70, transparent 55%),
+    linear-gradient(transparent 73%, #a188d0 74%, #2b2047 75%, #110e1c);
+  content: "";
 }
 
 #ia-figura {
@@ -14,12 +110,43 @@
 }
 
 #tela-batalha .acoes {
-  margin-top: 1rem;
+  grid-column: 1 / -1;
+}
+
+#tela-batalha .acoes button {
+  flex: 1 1 8rem;
+}
+
+#btn-atacar {
+  border-color: var(--cor-ia);
 }
 
 #btn-defender {
+  border-color: var(--cor-jogador);
   touch-action: none;
   user-select: none;
+}
+
+#btn-curar {
+  border-color: var(--cor-cura);
+}
+
+#btn-especial {
+  border-color: var(--cor-especial);
+}
+
+#mensagens {
+  grid-column: 1 / -1;
+  min-height: 3rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #51416c;
+  border-radius: 0.5rem;
+  background: #171122;
+  overflow-wrap: anywhere;
+}
+
+#mensagens p {
+  margin: 0.25rem 0;
 }
 
 .barra-vida {
@@ -45,36 +172,65 @@
 }
 
 #cronometro {
+  padding: 0.2rem 0.65rem;
+  border: 1px solid currentColor;
+  border-radius: 0.45rem;
+  background: #171122;
+  font-size: 1.25rem;
   font-variant-numeric: tabular-nums;
   font-weight: bold;
 }
 
-.tempo-acabando,
+#cronometro.tempo-acabando {
+  color: var(--cor-ia);
+  animation: alerta-tempo 1.2s ease-in-out infinite;
+}
+
 .msg-ia,
 .derrota {
-  color: #ff929e;
+  color: var(--cor-ia);
 }
 
 .msg-jogador {
-  color: #9fc9ff;
+  color: var(--cor-jogador);
 }
 
 .msg-sistema,
 .empate {
-  color: #ffe08a;
+  color: var(--cor-especial);
 }
 
 .vitoria {
-  color: #8aeba5;
+  color: var(--cor-cura);
 }
 
 #tela-batalha .defendendo {
-  border-color: #9fc9ff;
-  outline: 2px solid #9fc9ff;
+  border-color: var(--cor-jogador);
+  outline: 2px solid var(--cor-jogador);
+}
+
+#tela-batalha .defendendo::after,
+#tela-batalha .atordoado::after {
+  position: absolute;
+  inset: 0.35rem 0.5rem auto auto;
+  font-size: 1.65rem;
+}
+
+#tela-batalha .defendendo::after {
+  content: "🛡️";
 }
 
 .atordoado {
   filter: grayscale(1);
+}
+
+#tela-batalha .atordoado::after {
+  content: "💫";
+  animation: atordoar 0.7s ease-in-out infinite alternate;
+}
+
+#ia-figura::after {
+  transform: scaleX(-1);
 }
 
 .animar-ataque {
@@ -127,8 +283,19 @@
   50% { scale: 1.07; filter: drop-shadow(0 0 1rem #ffca52); }
 }
 
+@keyframes atordoar {
+  from { rotate: -15deg; }
+  to { rotate: 15deg; }
+}
+
+@keyframes alerta-tempo {
+  50% { box-shadow: 0 0 0.85rem #ff4d5e9c; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  #tela-batalha .figura {
+  #tela-batalha .figura,
+  #tela-batalha .atordoado::after,
+  #cronometro.tempo-acabando {
     animation: none;
   }
 
