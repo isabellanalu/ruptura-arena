@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruptura Arena</title>
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/arena.css">
+  <link rel="stylesheet" href="css/personagens.css">
+</head>
+<body>
+  <section id="tela-menu" class="tela">
+    <h1>Ruptura Arena</h1>
+  </section>
+  <section id="tela-personagens" class="tela escondida"></section>
+  <section id="tela-como-jogar" class="tela escondida"></section>
+  <section id="tela-selecao" class="tela escondida"></section>
+  <section id="tela-batalha" class="tela escondida"></section>
+  <section id="tela-resultado" class="tela escondida"></section>
+
+  <!-- A ordem dos scripts segue as dependências entre os arquivos. -->
+  <script src="js/dados.js"></script>
+  <script src="js/estado.js"></script>
+  <script src="js/niveis.js"></script>
+  <script src="js/interface.js"></script>
+  <script src="js/combate.js"></script>
+  <script src="js/ia.js"></script>
+  <script src="js/cronometro.js"></script>
+  <script src="js/resultado.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
