@@ -3,6 +3,8 @@
 // Responsável: (nome do aluno)
 // =============================================
 
+const CHAVE_PROGRESSO = "rupturaArena.progresso";
+
 // Guarda o progresso da sessão e a partida atual.
 const sessao = {
   vitorias: 0,
@@ -39,4 +41,46 @@ function criarPartida(idJogador, idIA) {
     intervaloIA: null
   };
   return partida;
+}
+
+// Salva apenas vitórias, derrotas e empates no navegador.
+function salvarProgresso() {
+  try {
+    localStorage.setItem(CHAVE_PROGRESSO, JSON.stringify(sessao));
+  } catch (erro) {
+    // Se o navegador bloquear o armazenamento, a sessão continua em memória.
+  }
+}
+
+// Carrega os totais salvos e descarta um registro inválido.
+function carregarProgresso() {
+  try {
+    const texto = localStorage.getItem(CHAVE_PROGRESSO);
+    if (texto === null) return;
+    const salvo = JSON.parse(texto);
+    if (!salvo || typeof salvo !== "object" || Array.isArray(salvo)) {
+      zerarProgresso();
+      return;
+    }
+
+    Object.keys(sessao).forEach(function (chave) {
+      const total = Number(salvo[chave]);
+      sessao[chave] = Number.isSafeInteger(total) && total >= 0 ? total : 0;
+    });
+  } catch (erro) {
+    zerarProgresso();
+  }
+}
+
+// Zera os totais em memória e apaga o progresso salvo.
+function zerarProgresso() {
+  sessao.vitorias = 0;
+  sessao.derrotas = 0;
+  sessao.empates = 0;
+
+  try {
+    localStorage.removeItem(CHAVE_PROGRESSO);
+  } catch (erro) {
+    // Os totais da sessão já estão zerados se o armazenamento estiver bloqueado.
+  }
 }

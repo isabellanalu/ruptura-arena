@@ -17,6 +17,13 @@ function configurarBotoes() {
     mostrarTela("tela-como-jogar");
   });
 
+  document.getElementById("btn-zerar-progresso").addEventListener("click", function () {
+    if (confirm("Apagar todo o progresso?")) {
+      zerarProgresso();
+      atualizarMenu();
+    }
+  });
+
   const botoesVoltar = ["btn-voltar-personagens", "btn-voltar-como-jogar", "btn-voltar-selecao", "btn-menu"];
   botoesVoltar.forEach(function (idBotao) {
     document.getElementById(idBotao).addEventListener("click", function () {
@@ -74,6 +81,7 @@ function configurarTeclado() {
 
 // Prepara a navegação e abre o menu quando o HTML estiver pronto.
 function inicializar() {
+  carregarProgresso();
   configurarBotoes();
   configurarTeclado();
   atualizarMenu();

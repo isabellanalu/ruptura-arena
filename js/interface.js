@@ -183,7 +183,7 @@ function animar(lutador, classeAnimacao) {
   figura.classList.add(classeAnimacao);
 }
 
-// Preenche o resultado básico e mostra a tela de encerramento.
+// Preenche o resultado da luta e mostra a tela de encerramento.
 function mostrarTelaResultado(resultado, subiuDeNivel) {
   const titulo = document.getElementById("resultado-titulo");
   titulo.className = resultado;
@@ -197,7 +197,7 @@ function mostrarTelaResultado(resultado, subiuDeNivel) {
   let mensagem = "A partida terminou empatada.";
   if (resultado === "vitoria") mensagem = jogador.dados.nome + " venceu " + ia.dados.nome + " " + motivo + "!";
   if (resultado === "derrota") mensagem = ia.dados.nome + " venceu " + jogador.dados.nome + " " + motivo + "!";
-  if (subiuDeNivel) mensagem += " Você subiu para o nível " + nivelAtual() + "!";
+  if (subiuDeNivel) mensagem += " 🎉 Você subiu para o Nível " + nivelAtual() + "! Novos personagens liberados.";
   document.getElementById("resultado-mensagem").textContent = mensagem;
   document.getElementById("resultado-jogador").textContent =
     "Você (" + jogador.dados.nome + "): " + jogador.vida + " / " + jogador.dados.vidaMaxima + " de vida";

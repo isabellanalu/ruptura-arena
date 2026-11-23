@@ -29,5 +29,6 @@ function registrarResultado(resultado) {
   if (resultado === "vitoria") sessao.vitorias++;
   else if (resultado === "derrota") sessao.derrotas++;
   else sessao.empates++;
+  salvarProgresso();
   return nivelAtual() > nivelAntes;
 }
