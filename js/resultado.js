@@ -8,8 +8,7 @@ function encerrarPartida(motivo) {
   if (!partida || !partida.ativa) return;
   partida.ativa = false;
   pararCronometro();
-  clearInterval(partida.intervaloIA);
-  partida.intervaloIA = null;
+  pararIA();
   partida.jogador.defendendo = false;
   partida.ia.defendendo = false;
   const resultado = definirResultado();

@@ -39,19 +39,20 @@ function configurarBotoes() {
   btnDefender.addEventListener("pointercancel", jogadorSoltarDefesa);
 }
 
-// Monta a luta com um adversário parado e inicia a contagem.
+// Monta a luta e inicia o cronômetro e os turnos da IA.
 function iniciarBatalha(idPersonagemJogador) {
   const personagem = buscarPersonagem(idPersonagemJogador);
   if (!personagem || !personagemLiberado(personagem, nivelAtual())) return;
   if (partida && partida.ativa) return;
 
-  // Faísca e Casco já estão disponíveis no primeiro nível.
-  const idIA = idPersonagemJogador === "casco" ? "faisca" : "casco";
+  const idIA = escolherPersonagemIA(idPersonagemJogador);
   pararCronometro();
+  pararIA();
   criarPartida(idPersonagemJogador, idIA);
   mostrarTela("tela-batalha");
   montarArena();
   iniciarCronometro();
+  iniciarIA();
 }
 
 // Liga as teclas às mesmas ações dos botões da arena.
